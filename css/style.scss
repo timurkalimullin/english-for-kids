@@ -1,0 +1,72 @@
+$color_1: hsla(24, 100%, 60%, 0.5);
+$color_2: hsla(7, 83%, 49%, 1);
+$color_3: hsla(106, 87%, 55%, 0.5);
+
+
+@import "_switcher.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 40px 0 40px;
+}
+
+header {
+  height: 90px;
+  padding-top: 30px;
+  .header__wrapper {
+    display: flex;
+    justify-content: space-between;
+    nav{
+      position: fixed;
+      top: 0;
+      left: -100%;
+      height: 100vh;
+      width: 270px;
+    }
+  }
+}
+
+.main__wrapper {
+  border: 2px ridge black;
+  width: 100%;
+  height: 700px;
+  padding: 10px 0 10px 0;
+  .card {
+    position: relative;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    display: flex;
+    box-sizing: border-box;
+    justify-content: flex-end;
+    width: 300px;
+    height: 250px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 20px 25px;
+    box-shadow: 0 1px 3px 0 #ccc;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.4);
+    -webkit-transition: box-shadow .25s linear,-webkit-transform .7s;
+    transition: box-shadow .25s linear,-webkit-transform .7s;
+    transition: box-shadow .25s linear,transform .7s;
+    transition: box-shadow .25s linear,transform .7s,-webkit-transform .7s;
+  }
+  .back, .front {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    background-size: contain;
+    background-repeat: no-repeat;
+    -webkit-transition: .3s;
+    transition: .3s;
+  }
+}
+
