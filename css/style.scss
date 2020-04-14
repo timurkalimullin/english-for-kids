@@ -1,6 +1,5 @@
-$color_1: hsla(24, 100%, 60%, 0.5);
-$color_2: hsla(7, 83%, 49%, 1);
-$color_3: hsla(106, 87%, 55%, 0.5);
+$color_1: #e03318;
+$color_3: #15b2c5;
 
 
 @import "_switcher.scss";
@@ -42,6 +41,7 @@ header {
   .card {
     position: relative;
     transform-style: preserve-3d;
+    cursor: pointer;
     display: flex;
     box-sizing: border-box;
     justify-content: flex-end;
@@ -52,18 +52,24 @@ header {
     margin: 20px 25px;
     box-shadow: 0 1px 3px 0 #ccc;
     box-shadow: 0 1px 2px 0 rgba(0,0,0,.4);
-    transition: .7s ease-in-out;
-
+    transition: .4s ease-in-out;
     .rotate{
-      background-image: url("../assets/img/reload.svg");
+      background-image: url(../assets/img/reload.png);
+      background-size: contain;
       width: 29px;
-      height: 100%;
+      height: 29px;
       z-index: 3;
       background-repeat: no-repeat;
       top: 84%;
       position: relative;
       right: 5%;
       backface-visibility: hidden;
+      filter: invert(100%);
+      transition: 0.2s ease-in-out;
+      &:hover{
+        transform: scale(1.2,1.2);
+        filter: none;
+      }
     }
     .back, .front {
       display: flex;
