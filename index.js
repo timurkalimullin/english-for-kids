@@ -1,5 +1,7 @@
 
-import Card from './js/card_render.js';
+import {Card, MainCard} from './js/card_render.js';
+import {cards,categories} from './js/cards.js';
+
 
 const checkbox = document.querySelector('input[type="checkbox"]');
 
@@ -24,16 +26,11 @@ function switcher() {
   }
 }
 
-const dataCard = {
-  word: 'dive',
-  translation: 'нырять',
-  image: '../assets/img/dive.jpg',
-  audioSrc: '../assets/audio/dive.mp3'
-};
+Object.keys(categories).forEach(el=>{
+  let newCard = new MainCard(el).renderCard();
 
-let newCard = new Card(dataCard).renderCard();
-
-document.querySelector('.main__wrapper').append(newCard);
+  document.querySelector('.main__wrapper').append(newCard);
+});
 
 
 

@@ -1,6 +1,6 @@
-const cards = [
-  ['Action (set A)', 'Action (set B)', 'Animal (set A)', 'Animal (set B)', 'Clothes', 'Emotions'],
-  [
+const categories = {'action-set-a':'Action (set A)', 'action-set-b':'Action (set B)', 'animal-set-a':'Animal (set A)', 'animal-set-b':'Animal (set B)', 'clothes':'Clothes', 'emotions':'Emotions'};
+const cards = {
+  'action-set-a':[
     {
       word: 'cry',
       translation: 'плакать',
@@ -50,7 +50,7 @@ const cards = [
       audioSrc: '../assets/audio/jump.mp3'
     }
   ],
-  [
+  'action-set-b':[
     {
       word: 'open',
       translation: 'открывать',
@@ -100,7 +100,7 @@ const cards = [
       audioSrc: '../assets/audio/swim.mp3'
     }
   ],
-  [
+  'animal-set-a':[
     {
       word: 'cat',
       translation: 'кот',
@@ -150,7 +150,7 @@ const cards = [
       audioSrc: '../assets/audio/sheep.mp3'
     }
   ],
-  [
+  'animal-set-b':[
     {
       word: 'bird',
       translation: 'птица',
@@ -200,7 +200,7 @@ const cards = [
       audioSrc: '../assets/audio/dolphin.mp3'
     }
   ],
-  [
+  'clothes':[
     {
       word: 'skirt',
       translation: 'юбка',
@@ -250,7 +250,7 @@ const cards = [
       audioSrc: '../assets/audio/shoe.mp3'
     }
   ],
-  [
+  'emotions':[
     {
       word: 'sad',
       translation: 'грустный',
@@ -300,6 +300,7 @@ const cards = [
       audioSrc: '../assets/audio/laugh.mp3'
     }
   ]
-];
+};
 
-export default cards;
+
+export  {cards,categories};
