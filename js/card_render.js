@@ -45,12 +45,11 @@ class MainCard {
     let random = Math.floor(Math.random()*(this.categorieContent.length)),
     randomImg = this.categorieContent[random].image;
     const card = document.createElement('div');
-    card.classList.add('main-card');
+    card.classList.add('sub-link', 'sub-link__card');
+    card.setAttribute('id', `${this.categorie}`);
     card.innerHTML = `
-    <div class="main-card__img">
-    <img src="${randomImg}" alt="image">
-    </div>
-    <p></p>
+    <img  class="sub-link__card__img" src="${randomImg}" alt="image">
+    <p>${categories[this.categorie]}</p>
     `;
 
     return card;
