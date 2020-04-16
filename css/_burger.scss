@@ -17,14 +17,13 @@ $translateX: 0;
   cursor: pointer;
   .line {
     display:block;
-    background:$color_3;
+    background-color:rgb(41, 39, 39);
     width:$width-line;
     height:$height-line;
     left:0;
     border-radius:($height-line / 2);
     transition: all $transition-time;
     margin-bottom: 4px;
-
     &.line-1 {
       top:0;
     }
@@ -46,14 +45,14 @@ $translateX: 0;
   &.active {
     .line-1 {
       transform: translateY(8.2px) translateX($translateX) rotate($rotation);
-      background:$color_1;
+      background-color: rgb(226, 191, 191);
     }
     .line-2 {
       opacity:0;
     }
     .line-3 {
       transform: translateY(-8.2px) translateX($translateX) rotate($rotation * -1);
-      background:$color_1;
+      background-color: rgb(226, 191, 191);
     }
   }
 }

@@ -1,4 +1,4 @@
-import { cards, categories } from "./cards.js";
+import { cards, categories} from "./cards.js";
 
 class Card {
   constructor (data) {
@@ -9,6 +9,9 @@ class Card {
   renderCard() {
     const card = document.createElement('div');
     card.classList.add('card');
+    if (!window.state.train) {
+      card.classList.add('play');
+    }
     card.innerHTML = `
     <div class="front" style="background-image: url(${this.data.image});">
     <div class="card-header">${this.data.word}</div></div>
@@ -18,12 +21,14 @@ class Card {
     `;
 
     card.addEventListener('click', (e)=>{
-      if (e.target === card.querySelector('.rotate')) {
-        card.classList.add('flip');
-      }
-      if (e.target === card.querySelector('.front')) {
-        let audio = new Audio(this.audio);
-        audio.play();
+      if (window.state.train) {
+        if (e.target === card.querySelector('.rotate')) {
+          card.classList.add('flip');
+        }
+        if (e.target === card.querySelector('.front')) {
+          let audio = new Audio(this.audio);
+          audio.play();
+        }
       }
     });
 
@@ -46,6 +51,9 @@ class MainCard {
     randomImg = this.categorieContent[random].image;
     const card = document.createElement('div');
     card.classList.add('sub-link', 'sub-link__card');
+    if (!window.state.train) {
+      card.classList.add('play');
+    }
     card.setAttribute('id', `${this.categorie}`);
     card.innerHTML = `
     <img  class="sub-link__card__img" src="${randomImg}" alt="image">

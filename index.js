@@ -1,9 +1,14 @@
 
 import MainPage from './js/main_page.js';
 
+window.state = {
+  train: true
+};
+
+
 let main = new MainPage();
 
-main.renderSub('animal-set-a');
+main.renderMain();
 main.listeners();
 
 

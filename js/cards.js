@@ -302,5 +302,4 @@ const cards = {
   ]
 };
 
-
 export  {cards,categories};

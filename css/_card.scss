@@ -1,0 +1,85 @@
+.card {
+  position: relative;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  display: flex;
+  box-sizing: border-box;
+  justify-content: flex-end;
+  width: 300px;
+  height: 250px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 15px;
+  box-shadow: 0 1px 3px 0 #ccc;
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,.4);
+  transition: .4s ease-in-out;
+  &:hover{
+    box-shadow: 0 10px 20px rgba(0,0,0,.4);
+  }
+  .rotate{
+    background-image: url(../assets/img/reload.png);
+    background-size: contain;
+    width: 29px;
+    height: 29px;
+    z-index: 3;
+    background-repeat: no-repeat;
+    top: 84%;
+    position: relative;
+    right: 5%;
+    backface-visibility: hidden;
+    filter: saturate(70%);
+    transition: 0.2s ease-in-out;
+    &:hover{
+      transform: scale(1.2,1.2);
+      filter: none;
+    }
+  }
+  .back, .front {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: .3s;
+    .card-header {
+      margin-top: 200px;
+      padding: 0 15px;
+      font-size: 24px;
+      line-height: 45px;
+      text-align: center;
+      width: 100%;
+      pointer-events: none;
+      background: #fff;
+      color: rgb(60, 62, 68);
+      text-shadow: 1px 1px 3px grey;
+      backface-visibility: hidden;
+      @include card_train;
+    }
+  }
+  .front{
+    .card-header{
+      backface-visibility: hidden;
+    }
+  }
+  .back{
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+  }
+}
+.card.flip{
+  transform: rotateY(180deg);
+}
+.card.play{
+  .rotate{
+    display: none;
+  }
+  .card-header{
+    display: none;
+  }
+  .front{
+    background-size: cover;
+    background-position: 60%;
+  }
+}

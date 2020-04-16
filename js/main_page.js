@@ -2,9 +2,6 @@ import {Card, MainCard} from './card_render.js';
 import {cards,categories} from './cards.js';
 
 export default class MainPage {
-  constructor() {
-    this.train = true;
-  }
 
   renderMain() {
     Object.keys(categories).forEach(el=>{
@@ -24,8 +21,8 @@ export default class MainPage {
     const checkbox = document.querySelector('input[type="checkbox"]');
 
     checkbox.addEventListener('change', ()=>{
-      console.log(this.train);
       this.switcher();
+      console.log(window.state.train);
     });
 
     document.querySelector('#hamburger-icon').addEventListener('mousedown', ()=>{
@@ -35,6 +32,13 @@ export default class MainPage {
   }
 
   switcher() {
-    this.train = !this.train;
+    window.state.train = !window.state.train;
+    document.querySelectorAll('.card').forEach(el=>{
+      el.classList.toggle('play');
+    });
+    document.querySelectorAll('.sub-link__card').forEach(el=>{
+      el.classList.toggle('play');
+    });
+    document.querySelector('nav').classList.toggle('play');
   }
 }
