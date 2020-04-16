@@ -2,10 +2,14 @@ $color_1: #a35b40;
 $color_3: #177455;
 $color_2: #f3eef5;
 @mixin card_play {
-  background-image: linear-gradient(to right, #ffecd2 0%, #a35b40 100%);
+  background-image: linear-gradient(1deg, #ffecd2 0%, #a35b40 100%);
 }
 @mixin card_train {
   background-image: linear-gradient(to top, #acd3bb 0%, #0c6b47 100%);
+}
+
+@mixin card_header {
+  background-image: linear-gradient(135deg, #fdfcfb 0%, #aed8ca 100%);
 }
 
 @import "_card.scss";
@@ -51,6 +55,7 @@ header {
         margin: 199px 0 0 66px;
         li{
           margin-bottom: 5px;
+          cursor: pointer;
         }
       }
     }
@@ -60,6 +65,13 @@ header {
     nav.play{
       background-color: rgba($color_1, $alpha: 0.9);
     }
+  }
+  .home{
+    width: 50px;
+    height: 50px;
+    background-image: url("../assets/img/home.png");
+    background-size:cover;
+    cursor: pointer;
   }
 }
 

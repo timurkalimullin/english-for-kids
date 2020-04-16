@@ -41,8 +41,10 @@
     top: 0;
     bottom: 0;
     background-size: contain;
+    background-position:0 2%;
     background-repeat: no-repeat;
     transition: .3s;
+    backface-visibility: hidden;
     .card-header {
       margin-top: 200px;
       padding: 0 15px;
@@ -51,21 +53,13 @@
       text-align: center;
       width: 100%;
       pointer-events: none;
-      background: #fff;
       color: rgb(60, 62, 68);
       text-shadow: 1px 1px 3px grey;
-      backface-visibility: hidden;
-      @include card_train;
-    }
-  }
-  .front{
-    .card-header{
-      backface-visibility: hidden;
+      @include card_header;
     }
   }
   .back{
     transform: rotateY(180deg);
-    backface-visibility: hidden;
   }
 }
 .card.flip{
@@ -80,6 +74,6 @@
   }
   .front{
     background-size: cover;
-    background-position: 60%;
+    background-position: 20%;
   }
 }

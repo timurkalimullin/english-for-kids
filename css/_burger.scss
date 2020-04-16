@@ -10,11 +10,12 @@ $translateX: 0;
 
 
 #hamburger-icon {
-  width:$width-line;
-  height:$height-icon;
-  display:block;
+  width: 30px;
+  height: 20px;
+  display: block;
   z-index: 7;
   cursor: pointer;
+  margin-top: 18px;
   .line {
     display:block;
     background-color:rgb(41, 39, 39);
