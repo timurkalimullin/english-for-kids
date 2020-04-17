@@ -82,3 +82,19 @@ header {
   width: 100%;
 }
 
+.btn__wrapper{
+  .btn{
+    width: 100px;
+    height: 60px;
+    border: 2px solid green;
+    margin: 0 auto;
+    display: none;
+    &::before{
+      content: "PLAY!";
+    }
+    &.play{
+      display: block;
+    }
+  }
+}
+

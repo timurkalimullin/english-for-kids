@@ -20,6 +20,16 @@ export default class MainPage {
       let newCard = new Card(el).renderCard();
       document.querySelector('.main__wrapper').append(newCard);
     });
+    document.querySelector('.btn__wrapper').append(this.renderBtn());
+  }
+
+  renderBtn() {
+    const button = document.createElement('button');
+    button.classList.add('btn');
+    if (!window.state.train) {
+      button.classList.add('play');
+    }
+    return button;
   }
 
   listeners() {
@@ -61,9 +71,11 @@ export default class MainPage {
       el.classList.toggle('play');
     });
     document.querySelector('nav').classList.toggle('play');
-    }
+    document.querySelector('.btn').classList.toggle('play');
+  }
 
   clearPage() {
     document.querySelector('.main__wrapper').innerHTML = '';
+    document.querySelector('.btn__wrapper').innerHTML = '';
   }
 }
