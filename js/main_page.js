@@ -5,6 +5,7 @@ export default class App {
   constructor() {
     this.categorie = 'main-page';
     this.gameStarted = false;
+    this.gameListener = null;
   }
 
   renderMain() {
@@ -53,26 +54,59 @@ export default class App {
     };
     arr = shuffle(arr);
 
+    let currentCard, currentAudio, rightAnswer = 0, wrongAnswer = 0;
+
+    this.gameListener = () =>{
+      if (event.target.closest('.front')) {
+        if (event.target.querySelector('.card-header').innerHTML === currentCard.word) {
+          new Audio('../assets/audio/correct.mp3').play();
+          this.createStar('../assets/img/star-win.svg');
+          rightAnswer++;
+          document.removeEventListener('click', this.gameListener);
+          setTimeout(prog, 600);
+        } else {
+          new Audio('../assets/audio/error.mp3').play();
+          this.createStar('../assets/img/star.svg');
+          wrongAnswer++;
+        }
+      }
+
+      if (event.target.closest('.btn.play.begin')) {
+       currentAudio.play();
+      }
+    };
+
     const prog =()=> {
       if (arr.length>0) {
-        let currentCard = arr.pop();
-        new Audio(currentCard.audioSrc).play();
-        let listener = () =>{
-          if (event.target.closest('.front')) {
-            if (event.target.querySelector('.card-header').innerHTML === currentCard.word) {
-              new Audio('../assets/audio/correct.mp3').play();
-              document.removeEventListener('click', listener);
-              setTimeout(prog(), 1000);
-            } else {
-              new Audio('../assets/audio/error.mp3').play();
-            }
-          }
-        };
-        document.addEventListener('click', listener);
+        currentCard = arr.pop();
+        currentAudio = new Audio(currentCard.audioSrc);
+        currentAudio.play()
+        document.addEventListener('click', this.gameListener);
+      } else {
+        this.gameStarted = false;
+        this.clearPage();
+        this.createEmodji('../assets/img/success.jpg', '../assets/audio/success.mp3', setTimeout(this.clearPage, 1500));
+        setTimeout(this.renderMain, 1600);
+        this.categorie = 'main-page';
       }
     };
 
     prog();
+  }
+
+  createStar(path) {
+    const star = document.createElement('div');
+    star.style.backgroundImage = `url(${path})`;
+    star.classList.add('star');
+    document.querySelector('.star-bar').append(star);
+  }
+
+  createEmodji(imgSrc, audioSrc) {
+    const emodji = document.createElement('div');
+    emodji.style.backgroundImage = `url(${imgSrc})`;
+    emodji.classList.add('emodji');
+    new Audio(audioSrc).play();
+    document.querySelector('.main__wrapper').append(emodji);
   }
 
   listeners() {
@@ -123,11 +157,15 @@ export default class App {
       document.querySelector('.btn').classList.toggle('play');
       document.querySelector('.btn').classList.remove('begin');
     }
+    document.removeEventListener('click', this.gameListener);
+    document.querySelector('.star-bar').innerHTML = '';
   }
 
   clearPage() {
     this.gameStarted = false;
+    document.removeEventListener('click', this.gameListener);
     document.querySelector('.main__wrapper').innerHTML = '';
     document.querySelector('.btn__wrapper').innerHTML = '';
+    document.querySelector('.star-bar').innerHTML = '';
   }
 }
