@@ -1,9 +1,10 @@
 import {Card, MainCard} from './card_render.js';
 import {cards,categories} from './cards.js';
 
-export default class MainPage {
+export default class App {
   constructor() {
     this.categorie = 'main-page';
+    this.gameStarted = false;
   }
 
   renderMain() {
@@ -32,6 +33,48 @@ export default class MainPage {
     return button;
   }
 
+  game(categorie) {
+    this.gameStarted = true;
+    document.querySelector('.btn').classList.add('begin');
+    let arr = [];
+    Object.keys(cards[categorie]).forEach(el=>{
+      arr.push(cards[categorie][el]);
+    });
+
+    const shuffle = (arr) =>{
+      var j, temp;
+      for(var i = arr.length - 1; i > 0; i--){
+        j = Math.floor(Math.random()*(i + 1));
+        temp = arr[j];
+        arr[j] = arr[i];
+        arr[i] = temp;
+      }
+      return arr;
+    };
+    arr = shuffle(arr);
+
+    const prog =()=> {
+      if (arr.length>0) {
+        let currentCard = arr.pop();
+        new Audio(currentCard.audioSrc).play();
+        let listener = () =>{
+          if (event.target.closest('.front')) {
+            if (event.target.querySelector('.card-header').innerHTML === currentCard.word) {
+              new Audio('../assets/audio/correct.mp3').play();
+              document.removeEventListener('click', listener);
+              setTimeout(prog(), 1000);
+            } else {
+              new Audio('../assets/audio/error.mp3').play();
+            }
+          }
+        };
+        document.addEventListener('click', listener);
+      }
+    };
+
+    prog();
+  }
+
   listeners() {
     document.addEventListener('mousedown', (event)=>{
       let sublink = event.target.closest('.sub-link');
@@ -53,6 +96,10 @@ export default class MainPage {
         document.querySelector('nav').classList.remove('active');
         document.querySelector('#hamburger-icon').classList.remove('active');
       }
+
+      if (event.target.closest('.btn.play') && this.gameStarted === false) {
+        this.game(this.categorie);
+      }
     });
 
     const checkbox = document.querySelector('input[type="checkbox"]');
@@ -63,6 +110,7 @@ export default class MainPage {
   }
 
   switcher() {
+    this.gameStarted = false;
     window.state.train = !window.state.train;
     document.querySelectorAll('.card').forEach(el=>{
       el.classList.toggle('play');
@@ -71,10 +119,14 @@ export default class MainPage {
       el.classList.toggle('play');
     });
     document.querySelector('nav').classList.toggle('play');
-    document.querySelector('.btn').classList.toggle('play');
+    if (this.categorie !== 'main-page') {
+      document.querySelector('.btn').classList.toggle('play');
+      document.querySelector('.btn').classList.remove('begin');
+    }
   }
 
   clearPage() {
+    this.gameStarted = false;
     document.querySelector('.main__wrapper').innerHTML = '';
     document.querySelector('.btn__wrapper').innerHTML = '';
   }

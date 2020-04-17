@@ -95,6 +95,13 @@ header {
     &.play{
       display: block;
     }
+    &.begin{
+      display: block;
+      background-color:green;
+      &::before{
+        content: "BEGIN!";
+      }
+    }
   }
 }
 
