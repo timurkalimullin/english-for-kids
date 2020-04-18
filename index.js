@@ -11,6 +11,3 @@ let main = new App();
 main.renderMain();
 main.listeners();
 
-
-
-

@@ -57,13 +57,14 @@ export default class App {
     let currentCard, currentAudio, rightAnswer = 0, wrongAnswer = 0;
 
     this.gameListener = () =>{
-      if (event.target.closest('.front')) {
+      if (event.target.closest('.front') && !event.target.closest('.inactive')) {
         if (event.target.querySelector('.card-header').innerHTML === currentCard.word) {
+          event.target.closest('.card').classList.add('inactive');
           new Audio('../assets/audio/correct.mp3').play();
           this.createStar('../assets/img/star-win.svg');
           rightAnswer++;
           document.removeEventListener('click', this.gameListener);
-          setTimeout(prog, 600);
+          setTimeout(gameLogic, 600);
         } else {
           new Audio('../assets/audio/error.mp3').play();
           this.createStar('../assets/img/star.svg');
@@ -76,22 +77,30 @@ export default class App {
       }
     };
 
-    const prog =()=> {
+    const gameLogic =()=> {
       if (arr.length>0) {
         currentCard = arr.pop();
         currentAudio = new Audio(currentCard.audioSrc);
-        currentAudio.play()
+        currentAudio.play();
         document.addEventListener('click', this.gameListener);
       } else {
-        this.gameStarted = false;
-        this.clearPage();
-        this.createEmodji('../assets/img/success.jpg', '../assets/audio/success.mp3', setTimeout(this.clearPage, 1500));
-        setTimeout(this.renderMain, 1600);
-        this.categorie = 'main-page';
+        if (wrongAnswer === 0) {
+          this.gameStarted = false;
+          this.clearPage();
+          this.createEmodji('../assets/img/success.jpg', '../assets/audio/success.mp3','Congratulations!', setTimeout(this.clearPage, 3000));
+          setTimeout(this.renderMain, 3200);
+          this.categorie = 'main-page';
+        } else {
+          this.gameStarted = false;
+          this.clearPage();
+          this.createEmodji('../assets/img/failure.jpg', '../assets/audio/failure.mp3',`Number of wronganswers: ${wrongAnswer} :(`, setTimeout(this.clearPage, 3000));
+          setTimeout(this.renderMain, 3200);
+          this.categorie = 'main-page';
+        }
       }
     };
 
-    prog();
+    gameLogic();
   }
 
   createStar(path) {
@@ -101,9 +110,12 @@ export default class App {
     document.querySelector('.star-bar').append(star);
   }
 
-  createEmodji(imgSrc, audioSrc) {
+  createEmodji(imgSrc, audioSrc, text) {
     const emodji = document.createElement('div');
-    emodji.style.backgroundImage = `url(${imgSrc})`;
+    emodji.innerHTML = `
+    <img src=${imgSrc} alt="emodji">
+    <p>${text}</p>
+    `;
     emodji.classList.add('emodji');
     new Audio(audioSrc).play();
     document.querySelector('.main__wrapper').append(emodji);
@@ -148,6 +160,7 @@ export default class App {
     window.state.train = !window.state.train;
     document.querySelectorAll('.card').forEach(el=>{
       el.classList.toggle('play');
+      el.classList.remove('inactive');
     });
     document.querySelectorAll('.sub-link__card').forEach(el=>{
       el.classList.toggle('play');

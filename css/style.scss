@@ -36,7 +36,7 @@ header {
   .header__wrapper {
     display: flex;
     justify-content: space-between;
-    padding: 0 10%;
+    max-width: 1600px;
     nav{
       position: fixed;
       top: 0;
@@ -47,14 +47,14 @@ header {
       z-index: 5;
       transition: 0.6s all;
       color: rgb(226, 191, 191);;
-      text-shadow: rgb(72, 131, 185) 1px 1px 0, rgb(122, 188, 250) -1px -1px 0,
-      rgb(122, 188, 250) -1px 1px 0, rgb(122, 188, 250) 1px -1px 0;
+      text-shadow: rgb(16, 35, 53) 1px 1px 0, rgb(38, 68, 97) -1px -1px 0,
+      rgb(52, 73, 92) -1px 1px 0, rgb(42, 73, 102) 1px -1px 0;
       font-size: 23px;
       ul{
         list-style: none;
         margin: 199px 0 0 66px;
         li{
-          margin-bottom: 5px;
+          margin-bottom: 15px;
           cursor: pointer;
         }
       }
@@ -76,15 +76,18 @@ header {
 }
 
 .star-bar{
+  margin: 0 auto;
   display: flex;
   justify-content: flex-end;
-  width: 100%;
+  max-width: 1400px;
   height: 40px;
   padding: 0 20px 0 20px;
+  overflow-x: hidden;
   .star{
-    background-size: cover;
     width: 30px;
     height: 30px;
+    min-width: 30px;
+    background-size: cover;
   }
 }
 
@@ -93,36 +96,59 @@ header {
   justify-content: center;
   flex-wrap: wrap;
   width: 100%;
+  margin-bottom: 35px;
   .emodji{
     width: 83%;
+    max-width:800px;
     height: 50%;
-    position: absolute;
-    background-position: 38% 50%;
-    background-repeat: no-repeat;
-    background-size: contain;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 15px;
+    img{
+      width: 70%;
+    }
   }
 }
 
 .btn__wrapper{
+  text-align: center;
+  margin-bottom: 30px;
   .btn{
-    width: 100px;
-    height: 60px;
-    border: 2px solid green;
-    margin: 0 auto;
     display: none;
+    color: rgb(24, 21, 21);
+    font-size: 20px;
+    background-color: rgb(248, 241, 241);
+    padding: .7em 1.5em;
+    outline: none;
+    border-radius: 15%;
     &::before{
       content: "PLAY!";
+      text-shadow: 2px 2px 2px white;
     }
     &.play{
-      display: block;
+      display: inline-block;
     }
     &.begin{
-      display: block;
-      background-color:green;
+      display: inline-block;
       &::before{
-        content: "BEGIN!";
+        content: '';
+        background: url(../assets/img/noise.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: 26px 1px;
+        width: 80px;
+        height: 40px;
+        display: block;
       }
     }
   }
 }
+
+@media (max-width:1650px) {
+  .header__wrapper{
+    padding: 0 10%;
+  }
+}
+
+
 
