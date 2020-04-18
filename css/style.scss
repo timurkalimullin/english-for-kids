@@ -58,6 +58,10 @@ header {
           cursor: pointer;
         }
       }
+      .active{
+        color:rgb(107, 241, 230);
+        text-decoration: underline;
+      }
     }
     nav.active{
       left:0;
@@ -103,9 +107,13 @@ header {
     height: 50%;
     text-align: center;
     margin: 0 auto;
-    font-size: 15px;
+    font-size: 30px;
     img{
       width: 70%;
+    }
+    span{
+      color: red;
+      font-size: 1.1em;
     }
   }
 }
@@ -147,6 +155,12 @@ header {
 @media (max-width:1650px) {
   .header__wrapper{
     padding: 0 10%;
+  }
+}
+
+@media (max-width:500px) {
+  .emodji{
+    font-size: 15px;
   }
 }
 

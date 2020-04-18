@@ -93,7 +93,7 @@ export default class App {
         } else {
           this.gameStarted = false;
           this.clearPage();
-          this.createEmodji('../assets/img/failure.jpg', '../assets/audio/failure.mp3',`Number of wronganswers: ${wrongAnswer} :(`, setTimeout(this.clearPage, 3000));
+          this.createEmodji('../assets/img/failure.jpg', '../assets/audio/failure.mp3',`Number of wronganswers: <span>${wrongAnswer}</span> `, setTimeout(this.clearPage, 3000));
           setTimeout(this.renderMain, 3200);
           this.categorie = 'main-page';
         }
@@ -129,9 +129,17 @@ export default class App {
         if (sublinkId === 'main-page') {
           this.clearPage();
           this.renderMain();
+          document.querySelectorAll('.nav__sub-link').forEach(el=>{
+            el.classList.remove('active');
+          });
+          document.querySelector('.nav__sub-link#main-page').classList.add('active');
         } else {
           this.clearPage();
           this.renderSub(sublinkId);
+          document.querySelectorAll('.nav__sub-link').forEach(el=>{
+            el.classList.remove('active');
+          });
+          document.querySelector(`.nav__sub-link#${sublinkId}`).classList.add('active');
         }
       }
 

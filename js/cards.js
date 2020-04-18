@@ -1,4 +1,4 @@
-const categories = {'action-set-a':'Action (set A)', 'action-set-b':'Action (set B)', 'animal-set-a':'Animal (set A)', 'animal-set-b':'Animal (set B)', 'clothes':'Clothes', 'emotions':'Emotions'};
+const categories = {'action-set-a':'Action (set A)', 'action-set-b':'Action (set B)', 'animal-set-a':'Animal (set A)', 'animal-set-b':'Animal (set B)', 'clothes':'Clothes', 'emotions':'Emotions', 'tools': 'Tools', 'architecture':'Architecture'};
 const cards = {
   'action-set-a':[
     {
@@ -298,6 +298,106 @@ const cards = {
       translation: 'смех',
       image: '../assets/img/laugh.jpg',
       audioSrc: '../assets/audio/laugh.mp3'
+    }
+  ],
+  'tools':[
+    {
+      word: 'axe',
+      translation: 'топор',
+      image: '../assets/img/axe.jpg',
+      audioSrc: '../assets/audio/axe.mp3'
+    },
+    {
+      word: 'hammer',
+      translation: 'молоток',
+      image: '../assets/img/hammer.jpg',
+      audioSrc: '../assets/audio/hammer.mp3'
+    },
+    {
+      word: 'rake',
+      translation: 'грабли',
+      image: '../assets/img/rake.jpg',
+      audioSrc: '../assets/audio/rake.mp3'
+    },
+    {
+      word: 'saw',
+      translation: 'пила',
+      image: '../assets/img/saw.jpg',
+      audioSrc: '../assets/audio/saw.mp3'
+    },
+    {
+      word: 'scissors',
+      translation: 'ножницы',
+      image: '../assets/img/scissors.jpg',
+      audioSrc: '../assets/audio/scissors.mp3'
+    },
+    {
+      word: 'screwdriver',
+      translation: 'отвертка',
+      image: '../assets/img/screwdriver.jpg',
+      audioSrc: '../assets/audio/screwdriver.mp3'
+    },
+    {
+      word: 'shovel',
+      translation: 'лопата',
+      image: '../assets/img/shovel.jpg',
+      audioSrc: '../assets/audio/shovel.mp3'
+    },
+    {
+      word: 'vise',
+      translation: 'тиски',
+      image: '../assets/img/vise.jpg',
+      audioSrc: '../assets/audio/vise.mp3'
+    }
+  ],
+  'architecture':[
+    {
+      word: 'bridge',
+      translation: 'мост',
+      image: '../assets/img/bridge.jpg',
+      audioSrc: '../assets/audio/bridge.mp3'
+    },
+    {
+      word: 'castle',
+      translation: 'замок',
+      image: '../assets/img/castle.jpg',
+      audioSrc: '../assets/audio/castle.mp3'
+    },
+    {
+      word: 'fence',
+      translation: 'ограда',
+      image: '../assets/img/fence.jpg',
+      audioSrc: '../assets/audio/fence.mp3'
+    },
+    {
+      word: 'house',
+      translation: 'дом',
+      image: '../assets/img/house.jpg',
+      audioSrc: '../assets/audio/house.mp3'
+    },
+    {
+      word: 'pier',
+      translation: 'причал',
+      image: '../assets/img/pier.jpg',
+      audioSrc: '../assets/audio/pier.mp3'
+    },
+    {
+      word: 'stairs',
+      translation: 'лестница',
+      image: '../assets/img/stairs.jpg',
+      audioSrc: '../assets/audio/stairs.mp3'
+    },
+    {
+      word: 'tower',
+      translation: 'башня',
+      image: '../assets/img/tower.jpg',
+      audioSrc: '../assets/audio/tower.mp3'
+    },
+    {
+      word: 'tunnel',
+      translation: 'тоннель',
+      image: '../assets/img/tunnel.jpg',
+      audioSrc: '../assets/audio/tunnel.mp3'
     }
   ]
 };
