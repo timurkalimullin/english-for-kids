@@ -19,6 +19,7 @@ export default class App {
 
   renderSub(categorie) {
     this.categorie = categorie;
+    document.querySelector('.main-header').innerHTML = `<p>${this.categorie}</p>`;
     cards[categorie].forEach(el=>{
       let newCard = new Card(el).renderCard();
       document.querySelector('.main__wrapper').append(newCard);
@@ -137,6 +138,7 @@ export default class App {
           });
           document.querySelector('.nav__sub-link#main-page').classList.add('active');
         } else if (sublinkId === 'stats-link') {
+          this.category = 'statistics';
           this.clearPage();
           this.categorie = 'statistics';
           Statistics.renderStats();
@@ -166,10 +168,21 @@ export default class App {
         this.game(this.categorie);
       }
 
-      if (event.target.closest('.btn.reset') && this.gameStarted === false) {
+      if (event.target.closest('.btn.reset')) {
         Statistics.initStats();
         this.clearPage();
+        Statistics.dificultWords();
         Statistics.renderStats();
+      }
+
+      if (event.target.closest('.btn.dificult')) {
+        Statistics.dificultWords();
+        if (cards['dificult-words'].length > 0) {
+          this.clearPage();
+          this.renderSub('dificult-words');
+        } else {
+          alert('No words for repeat!');
+        }
       }
 
       if (event.target.closest('th')) {
@@ -209,5 +222,7 @@ export default class App {
     document.querySelector('.main__wrapper').innerHTML = '';
     document.querySelector('.btn__wrapper').innerHTML = '';
     document.querySelector('.star-bar').innerHTML = '';
+    document.querySelector('.main-header').innerHTML = '';
   }
 }
+

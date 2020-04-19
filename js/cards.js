@@ -399,7 +399,8 @@ const cards = {
       image: '../assets/img/tunnel.jpg',
       audioSrc: '../assets/audio/tunnel.mp3'
     }
-  ]
+  ],
+  'dificult-words':[]
 };
 
 export  {cards,categories};

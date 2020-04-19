@@ -24,6 +24,8 @@ export default class Statistics {
     stats = JSON.parse(window.localStorage.statistics);
     stats[card.word][arg]+=1;
     stats[card.word].percent = (stats[card.word].wrong * 100/(stats[card.word].wrong + stats[card.word].right)).toFixed();
+    stats[card.word].image = card.image;
+    stats[card.word].audioSrc = card.audioSrc;
     window.localStorage.statistics = JSON.stringify(stats);
   }
 
@@ -31,6 +33,11 @@ export default class Statistics {
     const resetBtn = document.createElement('button');
     resetBtn.classList.add('btn', 'reset');
     document.querySelector('.btn__wrapper').append(resetBtn);
+    const dificultBtn = document.createElement('button');
+    dificultBtn.classList.add('btn', 'dificult');
+    document.querySelector('.btn__wrapper').append(dificultBtn);
+
+    document.querySelector('.main-header').innerHTML = 'Statistics';
 
     const table = document.createElement('table'), stats = JSON.parse(window.localStorage.statistics);
     table.innerHTML = `
@@ -94,7 +101,26 @@ export default class Statistics {
       }
     }
   }
+
+  static dificultWords() {
+    let stats = JSON.parse(window.localStorage.statistics);
+
+    let obj ={}, arr =[];
+
+    Object.keys(stats).sort((a,b)=>{
+      return stats[b].percent - stats[a].percent;
+    }).forEach(el=>obj[el] = stats[el]);
+
+    for (let i=0; i<8; i++) {
+      if (obj[Object.keys(obj)[i]].percent != 0) {
+        arr.push(obj[Object.keys(obj)[i]]);
+      }
+    }
+    cards['dificult-words'] = arr;
+  }
 }
+
+
 
 
 

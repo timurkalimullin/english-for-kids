@@ -96,6 +96,12 @@ header {
   }
 }
 
+.main-header{
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
 .main__wrapper {
   display: flex;
   justify-content: center;
@@ -121,15 +127,16 @@ header {
 
 .btn__wrapper{
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 5px;
   .btn{
     display: none;
     color: rgb(24, 21, 21);
     font-size: 20px;
     background-color: rgb(248, 241, 241);
-    padding: .7em 1.5em;
+    padding: 7px 16px;
     outline: none;
     border-radius: 15%;
+    margin: 10px;
     &::before{
       content: "PLAY!";
       text-shadow: 2px 2px 2px white;
@@ -156,6 +163,15 @@ header {
       background-color: rgb(199, 173, 173);
       &::before{
         content: "RESET!";
+        text-shadow: 2px 2px 2px white;
+      }
+    }
+    &.dificult{
+      display: inline-block;
+      cursor: pointer;
+      background-color: rgb(199, 173, 173);
+      &::before{
+        content: "REPEAT DIFICULT WORDS";
         text-shadow: 2px 2px 2px white;
       }
     }
