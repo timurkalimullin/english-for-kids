@@ -1,5 +1,6 @@
 import {Card, MainCard} from './card_render.js';
 import {cards,categories} from './cards.js';
+import Statistics from './statistics.js';
 
 export default class App {
   constructor() {
@@ -63,12 +64,14 @@ export default class App {
           new Audio('../assets/audio/correct.mp3').play();
           this.createStar('../assets/img/star-win.svg');
           rightAnswer++;
+          new Statistics(currentCard).writeStats('right');
           document.removeEventListener('click', this.gameListener);
           setTimeout(gameLogic, 600);
         } else {
           new Audio('../assets/audio/error.mp3').play();
           this.createStar('../assets/img/star.svg');
           wrongAnswer++;
+          new Statistics(currentCard).writeStats('wrong');
         }
       }
 
