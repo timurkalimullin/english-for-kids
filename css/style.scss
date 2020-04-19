@@ -53,7 +53,7 @@ header {
       font-size: 23px;
       ul{
         list-style: none;
-        margin: 199px 0 0 66px;
+        margin: 140px 0 0 66px;
         li{
           margin-bottom: 15px;
           cursor: pointer;
@@ -166,12 +166,12 @@ header {
         text-shadow: 2px 2px 2px white;
       }
     }
-    &.dificult{
+    &.difficult{
       display: inline-block;
       cursor: pointer;
       background-color: rgb(199, 173, 173);
       &::before{
-        content: "REPEAT DIFICULT WORDS";
+        content: "REPEAT DIFFICULT WORDS";
         text-shadow: 2px 2px 2px white;
       }
     }

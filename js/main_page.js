@@ -171,15 +171,15 @@ export default class App {
       if (event.target.closest('.btn.reset')) {
         Statistics.initStats();
         this.clearPage();
-        Statistics.dificultWords();
+        Statistics.difficultWords();
         Statistics.renderStats();
       }
 
-      if (event.target.closest('.btn.dificult')) {
-        Statistics.dificultWords();
-        if (cards['dificult-words'].length > 0) {
+      if (event.target.closest('.btn.difficult')) {
+        Statistics.difficultWords();
+        if (cards['difficult-words'].length > 0) {
           this.clearPage();
-          this.renderSub('dificult-words');
+          this.renderSub('difficult-words');
         } else {
           alert('No words for repeat!');
         }

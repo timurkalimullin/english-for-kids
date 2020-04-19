@@ -400,7 +400,7 @@ const cards = {
       audioSrc: '../assets/audio/tunnel.mp3'
     }
   ],
-  'dificult-words':[]
+  'difficult-words':[]
 };
 
 export  {cards,categories};

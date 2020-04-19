@@ -33,9 +33,9 @@ export default class Statistics {
     const resetBtn = document.createElement('button');
     resetBtn.classList.add('btn', 'reset');
     document.querySelector('.btn__wrapper').append(resetBtn);
-    const dificultBtn = document.createElement('button');
-    dificultBtn.classList.add('btn', 'dificult');
-    document.querySelector('.btn__wrapper').append(dificultBtn);
+    const difficultBtn = document.createElement('button');
+    difficultBtn.classList.add('btn', 'difficult');
+    document.querySelector('.btn__wrapper').append(difficultBtn);
 
     document.querySelector('.main-header').innerHTML = 'Statistics';
 
@@ -102,7 +102,7 @@ export default class Statistics {
     }
   }
 
-  static dificultWords() {
+  static difficultWords() {
     let stats = JSON.parse(window.localStorage.statistics);
 
     let obj ={}, arr =[];
@@ -116,7 +116,7 @@ export default class Statistics {
         arr.push(obj[Object.keys(obj)[i]]);
       }
     }
-    cards['dificult-words'] = arr;
+    cards['difficult-words'] = arr;
   }
 }
 
