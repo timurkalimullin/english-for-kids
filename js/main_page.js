@@ -136,6 +136,14 @@ export default class App {
             el.classList.remove('active');
           });
           document.querySelector('.nav__sub-link#main-page').classList.add('active');
+        } else if (sublinkId === 'stats-link') {
+          this.clearPage();
+          this.categorie = 'statistics';
+          Statistics.renderStats();
+          document.querySelectorAll('.nav__sub-link').forEach(el=>{
+            el.classList.remove('active');
+          });
+          document.querySelector('.nav__sub-link#stats-link').classList.add('active');
         } else {
           this.clearPage();
           this.renderSub(sublinkId);
@@ -157,6 +165,16 @@ export default class App {
       if (event.target.closest('.btn.play') && this.gameStarted === false) {
         this.game(this.categorie);
       }
+
+      if (event.target.closest('.btn.reset') && this.gameStarted === false) {
+        Statistics.initStats();
+        this.clearPage();
+        Statistics.renderStats();
+      }
+
+      if (event.target.closest('th')) {
+        Statistics.sortTable(event.target);
+      }
     });
 
     const checkbox = document.querySelector('input[type="checkbox"]');
@@ -177,7 +195,7 @@ export default class App {
       el.classList.toggle('play');
     });
     document.querySelector('nav').classList.toggle('play');
-    if (this.categorie !== 'main-page') {
+    if (this.categorie !== 'main-page' && this.categorie !== 'statistics') {
       document.querySelector('.btn').classList.toggle('play');
       document.querySelector('.btn').classList.remove('begin');
     }

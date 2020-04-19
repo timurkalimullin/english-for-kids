@@ -12,9 +12,8 @@ window.onload = () => {
   }
 
   let main = new App();
-  // main.renderMain();
+  main.renderMain();
   main.listeners();
-  new Statistics().renderStats();
 };
 
 

@@ -1,9 +1,20 @@
 table{
-  font-size: 2vw;
+  font-size: 15px;
+  font-family: Arial, Helvetica, sans-serif;
   width: 90%;
   border-collapse: collapse;
   text-align: center;
   & th,td{
     border: 1px solid black;
+  }
+  th{
+    cursor: pointer;
+    border: 2px groove rgb(58, 58, 197);
+  }
+}
+
+@media (max-width: 600px) {
+  table{
+    font-size: 2vw;
   }
 }
